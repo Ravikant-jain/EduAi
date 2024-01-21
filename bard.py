@@ -12,7 +12,7 @@ transcript_url = "https://chat.openai.com/share/ad2470f8-6e35-4c71-9034-748126e4
 transcript_text = requests.get(transcript_url).text
 
 # Main container with grid layout
-col1, col2 = st.columns(2)
+col1, col2 = st.columns([0.7, 0.3])
 
 def capture_video():
     cap = cv2.VideoCapture(0)
@@ -55,7 +55,10 @@ def capture_video():
 
     cap.release()
 
-
+def generate_bot_response(user_input):
+        # Replace this with your logic to generate a bot response based on user input
+        # You can use language models, chatbot APIs, or custom logic here
+        return "I'm still under development, but I'll try my best to respond!"
 # Left column for livestream
 with col1:
     st.subheader("Livestream")
@@ -64,14 +67,71 @@ with col1:
     )  # Replace with actual YouTube embed URL
 
 # Right column with top-bottom split
-with col2:
-    with st.container():
-        st.subheader("Transcript")
-        st.write(transcript_text, unsafe_allow_html=True)
+# with col2:
+#     with st.container():
+#         st.subheader("Chat")
+#         st.write(transcript_text, unsafe_allow_html=True)
     
-    st.title("Webcam Capture in Streamlit")
+#     # st.title("Webcam Capture in Streamlit")
 
-    # Display the webcam video stream
+#     # Display the webcam video stream
+#     # capture_video()
+# with col2:
+#     st.title("Chatbox")
+#     messages = []  # Store chat messages here
+
+#     def generate_bot_response(user_input):
+#         # Replace this with your logic to generate a bot response based on user input
+#         # You can use language models, chatbot APIs, or custom logic here
+#         return "I'm still under development, but I'll try my best to respond!"
+    
+#     # Function to handle user input and bot responses
+#     def send_message(user_input):
+#         messages.append({"role": "user", "content": user_input})
+#         # Process user input and generate a bot response
+#         bot_response = generate_bot_response(user_input)
+#         messages.append({"role": "bot", "content": bot_response})
+
+#     # Display the chat messages
+#     for message in messages:
+#         with st.chat_message(message["role"]):
+#             st.markdown(message["content"])
+
+#     # Input field for user messages
+#     user_input = st.text_area("Enter your message", height=400)  # Adjust height as needed
+#     if user_input:
+#         send_message(user_input)
+
+with col2:
+    # Chat interface code
+    with st.container():
+        st.title("Chat Interface")
+
+        # Text area for chat messages
+    chat_history = st.empty()
+
+    # Function to append messages to the chat history
+    def add_message(message, role):
+        with chat_history.container():
+            with st.chat_message(role):
+                st.markdown(message)
+
+    # User input area
+    user_input = st.text_input("Enter your message", key="user_input")
+
+    # Submit button (optional)
+    if st.button("Send"):
+        # Process user input and generate a response
+        bot_response = generate_bot_response(user_input)
+
+        # Add both user and bot messages to the chat history
+        add_message(user_input, "user")
+        add_message(bot_response, "bot")
+
+        # Clear the input field
+        st.session_state.user_input = ""  # Clear the input using session state
+
+        # ... rest of the chat interface code (as provided in the previous response)
     capture_video()
 
     
