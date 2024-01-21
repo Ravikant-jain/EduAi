@@ -55,6 +55,7 @@ col1, col2 = st.columns([0.7, 0.3])
 
 #     cap.release()
 
+
 def generate_bot_response(user_input):
         # Replace this with your logic to generate a bot response based on user input
         # You can use language models, chatbot APIs, or custom logic here
