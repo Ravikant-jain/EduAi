@@ -25,12 +25,6 @@ def render_pdf(file_path):
 
     with par_c3:
         st.title("Chat with AI")
-
-        # Display the conversation history in a scrollable text area
-        conversation_text = "\n".join(conversation_history)
-        st.text_area("Conversation:", value=conversation_text, height=400, key="conversation_area")
-
-        # User input and sending
         user_input = st.text_input("You:", key="user_input")
 
         if st.button("Send"):
@@ -38,9 +32,9 @@ def render_pdf(file_path):
             ai_response = "AI: Hello! I'm a simple AI"
             conversation_history.append(f"You: {user_input}")
             conversation_history.append(ai_response)
-            
-            # Update the conversation history in session state
             st.session_state.conversation_history = conversation_history
+        conversation_text = "\n".join(conversation_history)
+        st.text_area("Conversation:", value=conversation_text, height=400, key="conversation_area")
 
 def main():
     render_pdf(r"C:\Users\rudra\Downloads\rdpd.pdf")
