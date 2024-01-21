@@ -1,10 +1,32 @@
 import requests
 
-API_URL = "https://api-inference.huggingface.co/models/sshleifer/distilbart-cnn-12-6"
+
+
+import requests
+
+API_URL = "https://api-inference.huggingface.co/models/openai/whisper-large-v3"
 headers = {"Authorization": "Bearer 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"}
 
+filename='audio1.mp3'
+
+def query(filename):
+    with open(filename, "rb") as f:
+        data = f.read()
+    response = requests.post(API_URL, headers=headers, data=data)
+    return response.json()
+
+output = query("audio1.mp3")
+
+
+print(output)
+
+
+
+API_URL2 = "https://api-inference.huggingface.co/models/sshleifer/distilbart-cnn-12-6"
+headers2 = {"Authorization": "Bearer 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"}
+
 def query(payload):
-	response = requests.post(API_URL, headers=headers, json=payload)
+	response = requests.post(API_URL2, headers=headers2, json=payload)
 	return response.json()
 
 story = """Once upon a time, a speedy Rabbit boasted of his lightning-fast legs. He'd zip across meadows, leaving even the wind breathless. One sunny day, he encountered a plodding Turtle, munching on a dandelion with unhurried patience.
@@ -20,5 +42,6 @@ The Rabbit, defeated and humbled, learned a valuable lesson that day. Speed wasn
 
 output = query({
 	"inputs": story})
- 
+
 print(output)
+
