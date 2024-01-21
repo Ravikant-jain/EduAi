@@ -68,14 +68,14 @@ conversation_history = st.session_state.get('conversation_history_stream', [])
 
 
 with col2:
-    st.title("Chat with AI")
+    st.title("Chat")
     user_input = st.text_input("You:", key="user_input")
 
     if st.button("Send"):
         # You can replace this with your AI model or service for generating responses
         ai_response = "AI: Hello! I'm a simple AI"
         conversation_history.append(f"You: {user_input}")
-        st.session_state.conversation_history = conversation_history
+        st.session_state.conversation_history_stream = conversation_history
     conversation_text = "\n".join(conversation_history)
     st.text_area("Conversation:", value=conversation_text, height=400, key="conversation_area")
     capture_video()

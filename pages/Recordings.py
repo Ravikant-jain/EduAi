@@ -16,7 +16,7 @@ def AI(yt_url):
 
 
 # Streamlit app layout
-st.title("Text Ai")
+st.title("Video")
 
 # Create two columns with the specified ratio
 col1, col2 = st.columns([0.7, 0.3])
@@ -29,7 +29,7 @@ with col1:
 with col2:
     
     X =TextAi.AiText(yt_url)
-    st.text_area("Video Trans:",X['Story'], height=400)
+    st.text_area("Video Transcription:",X['Story'], height=400)
 
     if st.button("Summarize"):
         st.text_area("Video Summary:",X['Summery'], height=400)
