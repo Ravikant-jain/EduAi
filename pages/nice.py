@@ -10,6 +10,10 @@ st.set_page_config(layout='wide')
 # Hardcoded YouTube video URL
 yt_url = 'https://www.youtube.com/watch?v=RP2gIgRL6Yw'
 
+@st.cache_data
+def AI(yt_url):
+    pass
+
 
 # Streamlit app layout
 st.title("Text Ai")
