@@ -1,4 +1,4 @@
-import streamlit as st
+'''import streamlit as st
 import live
 # Set page config at the beginning of the main script
 st.set_page_config(layout="wide")
@@ -27,3 +27,15 @@ elif st.session_state.page == "Video":
     live.main()  # Call the main function of video.py
 elif st.session_state.page == "Resources":
     live.main()  # Call the main function of resources.py
+'''
+
+import streamlit as st
+
+st.set_page_config(
+    page_title="Hello",
+    page_icon="👋",
+)
+
+st.write("# Welcome to Streamlit! 👋")
+
+st.sidebar.success("Select a demo above.")
