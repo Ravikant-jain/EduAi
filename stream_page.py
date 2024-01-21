@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_webrtc import webrtc_streamer
 import requests
 import cv2
-from gaze_tracking import GazeTracking
+# from gaze_tracking import GazeTracking
 
 
 st.set_page_config(layout="wide")
@@ -14,46 +14,46 @@ transcript_text = requests.get(transcript_url).text
 # Main container with grid layout
 col1, col2 = st.columns([0.7, 0.3])
 
-def capture_video():
-    cap = cv2.VideoCapture(0)
-    frame_placeholder = st.empty()
-    attention=[0,0]
-    gaze = GazeTracking()
-    while True:
-        ret, frame = cap.read()
-        if not ret: break
+# def capture_video():
+#     cap = cv2.VideoCapture(0)
+#     frame_placeholder = st.empty()
+#     attention=[0,0]
+#     gaze = GazeTracking()
+#     while True:
+#         ret, frame = cap.read()
+#         if not ret: break
 
-        rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+#         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-        attention[0]+=1
-        _, frame = cap.read()
+#         attention[0]+=1
+#         _, frame = cap.read()
 
-        gaze.refresh(frame)
-        frame = gaze.annotated_frame()
-        text = ""
+#         gaze.refresh(frame)
+#         frame = gaze.annotated_frame()
+#         text = ""
 
-        if gaze.is_blinking():
-            text = "Blinking"
-        elif gaze.is_right():
-            text = "Looking right"
-        elif gaze.is_left():
-            text = "Looking left"
-        elif gaze.is_center():
-            text = "Looking center"
-            attention[1]+=1
+#         if gaze.is_blinking():
+#             text = "Blinking"
+#         elif gaze.is_right():
+#             text = "Looking right"
+#         elif gaze.is_left():
+#             text = "Looking left"
+#         elif gaze.is_center():
+#             text = "Looking center"
+#             attention[1]+=1
 
-        cv2.putText(frame, text, (90, 60), cv2.FONT_HERSHEY_DUPLEX, 1.6, (147, 58, 31), 2)
+#         cv2.putText(frame, text, (90, 60), cv2.FONT_HERSHEY_DUPLEX, 1.6, (147, 58, 31), 2)
 
-        left_pupil = gaze.pupil_left_coords()
-        right_pupil = gaze.pupil_right_coords()
-        cv2.putText(frame, "Left pupil:  " + str(left_pupil), (90, 130), cv2.FONT_HERSHEY_DUPLEX, 0.9, (147, 58, 31), 1)
-        cv2.putText(frame, "Right pupil: " + str(right_pupil), (90, 165), cv2.FONT_HERSHEY_DUPLEX, 0.9, (147, 58, 31), 1)
-        frame_placeholder.image(frame, channels="RGB", use_column_width=True)
-        # cv2.imshow("Demo", frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+#         left_pupil = gaze.pupil_left_coords()
+#         right_pupil = gaze.pupil_right_coords()
+#         cv2.putText(frame, "Left pupil:  " + str(left_pupil), (90, 130), cv2.FONT_HERSHEY_DUPLEX, 0.9, (147, 58, 31), 1)
+#         cv2.putText(frame, "Right pupil: " + str(right_pupil), (90, 165), cv2.FONT_HERSHEY_DUPLEX, 0.9, (147, 58, 31), 1)
+#         frame_placeholder.image(frame, channels="RGB", use_column_width=True)
+#         # cv2.imshow("Demo", frame)
+#         if cv2.waitKey(1) & 0xFF == ord('q'):
+#             break
 
-    cap.release()
+#     cap.release()
 
 def generate_bot_response(user_input):
         # Replace this with your logic to generate a bot response based on user input
@@ -66,41 +66,6 @@ with col1:
         "https://www.youtube.com/embed/ErMSHiQRnc8"
     )  # Replace with actual YouTube embed URL
 
-# Right column with top-bottom split
-# with col2:
-#     with st.container():
-#         st.subheader("Chat")
-#         st.write(transcript_text, unsafe_allow_html=True)
-    
-#     # st.title("Webcam Capture in Streamlit")
-
-#     # Display the webcam video stream
-#     # capture_video()
-# with col2:
-#     st.title("Chatbox")
-#     messages = []  # Store chat messages here
-
-#     def generate_bot_response(user_input):
-#         # Replace this with your logic to generate a bot response based on user input
-#         # You can use language models, chatbot APIs, or custom logic here
-#         return "I'm still under development, but I'll try my best to respond!"
-    
-#     # Function to handle user input and bot responses
-#     def send_message(user_input):
-#         messages.append({"role": "user", "content": user_input})
-#         # Process user input and generate a bot response
-#         bot_response = generate_bot_response(user_input)
-#         messages.append({"role": "bot", "content": bot_response})
-
-#     # Display the chat messages
-#     for message in messages:
-#         with st.chat_message(message["role"]):
-#             st.markdown(message["content"])
-
-#     # Input field for user messages
-#     user_input = st.text_area("Enter your message", height=400)  # Adjust height as needed
-#     if user_input:
-#         send_message(user_input)
 
 with col2:
     # Chat interface code
@@ -132,7 +97,7 @@ with col2:
         st.session_state.user_input = ""  # Clear the input using session state
 
         # ... rest of the chat interface code (as provided in the previous response)
-    capture_video()
+    # capture_video()
 
     
 
