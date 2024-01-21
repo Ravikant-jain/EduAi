@@ -66,38 +66,21 @@ with col1:
     st.video(
         "https://www.youtube.com/embed/ErMSHiQRnc8"
     )  # Replace with actual YouTube embed URL
+conversation_history = st.session_state.get('conversation_history', [])
 
 
 with col2:
-    # Chat interface code
-    with st.container():
-        st.title("Chat Interface")
+    st.title("Chat with AI")
+    user_input = st.text_input("You:", key="user_input")
 
-        # Text area for chat messages
-    chat_history = st.empty()
-
-    # Function to append messages to the chat history
-    def add_message(message, role):
-        with chat_history.container():
-            with st.chat_message(role):
-                st.markdown(message)
-
-    # User input area
-    user_input = st.text_input("Enter your message", key="user_input")
-
-    # Submit button (optional)
     if st.button("Send"):
-        # Process user input and generate a response
-        bot_response = generate_bot_response(user_input)
-
-        # Add both user and bot messages to the chat history
-        add_message(user_input, "user")
-        add_message(bot_response, "bot")
-
-        # Clear the input field
-        st.session_state.user_input = ""  # Clear the input using session state
-
-        # ... rest of the chat interface code (as provided in the previous response)
+        # You can replace this with your AI model or service for generating responses
+        ai_response = "AI: Hello! I'm a simple AI"
+        conversation_history.append(f"You: {user_input}")
+        conversation_history.append(ai_response)
+        st.session_state.conversation_history = conversation_history
+    conversation_text = "\n".join(conversation_history)
+    st.text_area("Conversation:", value=conversation_text, height=400, key="conversation_area")
     # capture_video()
 
     
