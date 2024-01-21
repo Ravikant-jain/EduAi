@@ -8,7 +8,7 @@ def render_pdf(file_path):
     num_pages = doc.page_count
 
     # Initialize or get the conversation history
-    conversation_history = st.session_state.get('conversation_history', [])
+    conversation_history_resource = st.session_state.get('conversation_history', [])
     
     par_c1, par_c2, par_c3 = st.columns([3, 1, 2])
 
@@ -30,10 +30,10 @@ def render_pdf(file_path):
         if st.button("Send"):
             # You can replace this with your AI model or service for generating responses
             ai_response = "AI: Hello! I'm a simple AI"
-            conversation_history.append(f"You: {user_input}")
-            conversation_history.append(ai_response)
-            st.session_state.conversation_history = conversation_history
-        conversation_text = "\n".join(conversation_history)
+            conversation_history_resource.append(f"You: {user_input}")
+            conversation_history_resource.append(ai_response)
+            st.session_state.conversation_history_resource = conversation_history_resource
+        conversation_text = "\n".join(conversation_history_resource)
         st.text_area("Conversation:", value=conversation_text, height=400, key="conversation_area")
 
 def main():
@@ -43,5 +43,5 @@ if __name__ == "__main__":
     if 'page_number' not in st.session_state:
         st.session_state.page_number = 1
     if 'conversation_history' not in st.session_state:
-        st.session_state.conversation_history = []
+        st.session_state.conversation_history_resource = []
     main()
