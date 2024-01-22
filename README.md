@@ -57,10 +57,10 @@ Edu-Ai is a cutting-edge project leveraging the power of machine learning and ar
 
 ## Usage
 
-- Run the Hello.py file using the command given below in the terminal:
+- Run the Home.py file using the command given below in the terminal:
 
     ```bash
-    streamlit run Hello.py
+    streamlit run Home.py
     ```
 
 ## Contributing
