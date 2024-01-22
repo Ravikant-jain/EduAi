@@ -45,7 +45,7 @@ Edu-Ai is a cutting-edge project leveraging the power of machine learning and ar
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/Edu-Ai.git
+    git clone https://github.com/Ravikant-jain/EduAi
     cd Edu-Ai
     ```
 
@@ -65,7 +65,7 @@ Edu-Ai is a cutting-edge project leveraging the power of machine learning and ar
 
 ## Contributing
 
-Edu-Ai welcomes contributions from the vibrant AI and machine learning community. If you're interested in contributing, please follow the [contribution guidelines](CONTRIBUTING.md).
+Edu-Ai welcomes contributions from the vibrant AI and machine learning community. If you're interested in contributing, please follow the contribution guidelines.
 
 ## Acknowledgments
 
