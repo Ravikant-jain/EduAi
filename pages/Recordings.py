@@ -3,10 +3,6 @@ import TextAi
 
 st.set_page_config(layout='wide')
 
-
-# Function to summarize the video (dummy function for example)
-
-
 # Hardcoded YouTube video URL
 yt_url = 'https://www.youtube.com/watch?v=RP2gIgRL6Yw'
 
