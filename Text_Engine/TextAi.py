@@ -66,7 +66,7 @@ def API():
     
     #transcribe Ai
     API_URL = "https://api-inference.huggingface.co/models/openai/whisper-large-v3"
-    headers = {"Authorization": "Bearer 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"}
+    headers = {"Authorization": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}
 
     filename=r'Cache\extracted-audio.mp3'
 
@@ -82,7 +82,7 @@ def API():
     #summerise Ai
 
     API_URL2 = "https://api-inference.huggingface.co/models/sshleifer/distilbart-cnn-12-6"
-    headers2 = {"Authorization": "Bearer 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"}
+    headers2 = {"Authorization": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}
 
     def query2(payload):
         response = requests.post(API_URL2, headers=headers2, json=payload)
